@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Performance Analytics · TechMart Online Operations Console</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- ============== TOP NAVIGATION ============== -->
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="icon-btn" id="sidebarToggle" aria-label="Toggle navigation"><i class="bi bi-list"></i></button>
+    <div class="brand">
+      <span class="brand-mark">TM</span>
+      <div class="brand-text">
+        <span class="brand-name">TechMart Online</span>
+        <span class="brand-sub">Operations Console</span>
+      </div>
+    </div>
+  </div>
+  <div class="topbar-right">
+    <button class="icon-btn" aria-label="Notifications"><i class="bi bi-bell"></i><span class="notif-dot"></span></button>
+    <button class="icon-btn" aria-label="Settings"><i class="bi bi-gear"></i></button>
+    <div class="admin-chip">
+      <div class="avatar">JD</div>
+      <div class="admin-meta">
+        <span class="admin-name">J. Donahue</span>
+        <span class="admin-role">System Administrator</span>
+      </div>
+    </div>
+    <button class="btn-logout"><i class="bi bi-box-arrow-right"></i><span class="d-none d-sm-inline">Logout</span></button>
+  </div>
+</header>
+
+<!-- ============== SIDEBAR ============== -->
+<aside class="sidebar" id="sidebar">
+  <nav class="sidebar-nav">
+    <a href="dashboard.html" class="nav-item "><i class="bi bi-grid-1x2-fill"></i><span>Dashboard</span></a>
+    <a href="products.html" class="nav-item "><i class="bi bi-box-seam"></i><span>Product Management</span></a>
+    <a href="inventory.html" class="nav-item "><i class="bi bi-boxes"></i><span>Inventory Management</span></a>
+    <a href="orders.html" class="nav-item "><i class="bi bi-receipt-cutoff"></i><span>Order Management</span></a>
+    <a href="sessions.html" class="nav-item "><i class="bi bi-people-fill"></i><span>Customer Sessions</span></a>
+    <a href="messaging.html" class="nav-item "><i class="bi bi-envelope-paper-fill"></i><span>Messaging Center</span></a>
+    <a href="monitoring.html" class="nav-item "><i class="bi bi-cpu-fill"></i><span>System Monitoring</span></a>
+    <a href="analytics.html" class="nav-item active"><i class="bi bi-graph-up-arrow"></i><span>Performance Analytics</span></a>
+    <a href="settings.html" class="nav-item "><i class="bi bi-sliders"></i><span>Settings</span></a>
+  </nav>
+  <div class="sidebar-footer">
+    <div class="sys-status"><span class="dot dot-success dot-pulse"></span><span>All systems operational</span></div>
+  </div>
+</aside>
+
+<!-- ============== MAIN CONTENT ============== -->
+<main class="main-content">
+  <div class="page-inner">
+
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">Performance Analytics</h1>
+        <div class="page-breadcrumb">Operations<span class="sep">/</span>Performance Analytics</div>
+      </div>
+      <div class="page-actions">
+        <select class="form-select-tm" style="width:auto;">
+          <option>Last 24 Hours</option>
+          <option>Last 7 Days</option>
+          <option>Last 30 Days</option>
+        </select>
+        <button class="btn-tm btn-tm-primary"><i class="bi bi-download"></i> Export Report</button>
+      </div>
+    </div>
+
+    <!-- Performance cards -->
+    <div class="row grid-gap mb-4">
+      <div class="col-6 col-md-4 col-xl">
+        <div class="kpi-card">
+          <div class="kpi-top"><span class="kpi-label">Avg. Response Time</span><span class="kpi-icon icon-bg-success"><i class="bi bi-speedometer2"></i></span></div>
+          <div class="kpi-value">118<span style="font-size:13px;color:var(--text-secondary)">ms</span></div>
+          <div class="kpi-trend up"><i class="bi bi-arrow-down-short"></i> 9ms improvement</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-xl">
+        <div class="kpi-card">
+          <div class="kpi-top"><span class="kpi-label">Peak Response Time</span><span class="kpi-icon icon-bg-warning"><i class="bi bi-graph-up"></i></span></div>
+          <div class="kpi-value">642<span style="font-size:13px;color:var(--text-secondary)">ms</span></div>
+          <div class="kpi-trend down"><i class="bi bi-arrow-up-short"></i> during peak load, 13:02</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-xl">
+        <div class="kpi-card">
+          <div class="kpi-top"><span class="kpi-label">Throughput</span><span class="kpi-icon icon-bg-accent"><i class="bi bi-arrow-left-right"></i></span></div>
+          <div class="kpi-value">8.4<span style="font-size:13px;color:var(--text-secondary)">k/min</span></div>
+          <div class="kpi-trend up"><i class="bi bi-arrow-up-short"></i> 3.1% vs yesterday</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-xl">
+        <div class="kpi-card">
+          <div class="kpi-top"><span class="kpi-label">Error Rate</span><span class="kpi-icon icon-bg-danger"><i class="bi bi-exclamation-triangle"></i></span></div>
+          <div class="kpi-value">0.14<span style="font-size:13px;color:var(--text-secondary)">%</span></div>
+          <div class="kpi-trend up"><i class="bi bi-arrow-down-short"></i> within SLA target</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-xl">
+        <div class="kpi-card">
+          <div class="kpi-top"><span class="kpi-label">Requests Per Second</span><span class="kpi-icon icon-bg-accent"><i class="bi bi-lightning-charge"></i></span></div>
+          <div class="kpi-value" data-tm-tick data-tm-base="3140" data-tm-variance="120">3,140</div>
+          <div class="kpi-trend flat"><i class="bi bi-dash"></i> across all endpoints</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Analytical charts -->
+    <div class="row grid-gap">
+      <div class="col-lg-6">
+        <div class="chart-card">
+          <div class="card-tm-header">
+            <div><p class="card-tm-title">Throughput Trends</p><p class="card-tm-subtitle">Requests per minute, last 24 hours</p></div>
+          </div>
+          <div class="chart-canvas-wrap" style="height:230px;"><canvas id="chartThroughputTrend"></canvas></div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="chart-card">
+          <div class="card-tm-header">
+            <div><p class="card-tm-title">Response Time Trends</p><p class="card-tm-subtitle">P50 / P95 latency, last 24 hours</p></div>
+          </div>
+          <div class="chart-canvas-wrap" style="height:230px;"><canvas id="chartResponseTrend"></canvas></div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="chart-card">
+          <div class="card-tm-header">
+            <div><p class="card-tm-title">Queue Processing Trends</p><p class="card-tm-subtitle">JMS messages processed per minute</p></div>
+          </div>
+          <div class="chart-canvas-wrap" style="height:230px;"><canvas id="chartQueueTrend"></canvas></div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="chart-card">
+          <div class="card-tm-header">
+            <div><p class="card-tm-title">Resource Utilization Trends</p><p class="card-tm-subtitle">CPU vs. memory, cluster average</p></div>
+          </div>
+          <div class="chart-canvas-wrap" style="height:230px;"><canvas id="chartResourceTrend"></canvas></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+(function () {
+  function genSeries(n, base, variance) {
+    var arr = []; var v = base;
+    for (var i = 0; i < n; i++) { v += (Math.random() * variance * 2 - variance); v = Math.max(0, v); arr.push(Math.round(v)); }
+    return arr;
+  }
+  function genHourLabels(n) {
+    var labels = []; var now = new Date();
+    for (var i = n - 1; i >= 0; i--) { var d = new Date(now.getTime() - i * 60 * 60000); labels.push(d.toLocaleTimeString([], { hour: "2-digit" })); }
+    return labels;
+  }
+
+  window.addEventListener("load", function () {
+    if (!window.Chart) return;
+    var labels = genHourLabels(12);
+
+    new Chart(document.getElementById("chartThroughputTrend"), {
+      type: "line",
+      data: { labels: labels, datasets: [{ label: "req/min", data: genSeries(12, 8200, 900), borderColor: TM.palette.accent, backgroundColor: TM.palette.accentSoft, fill: true, tension: 0.35, pointRadius: 0, borderWidth: 2 }] },
+      options: TM.baseLineOptions()
+    });
+
+    new Chart(document.getElementById("chartResponseTrend"), {
+      type: "line",
+      data: {
+        labels: labels,
+        datasets: [
+          { label: "P50 (ms)", data: genSeries(12, 110, 14), borderColor: TM.palette.success, backgroundColor: "transparent", tension: 0.35, pointRadius: 0, borderWidth: 2 },
+          { label: "P95 (ms)", data: genSeries(12, 320, 40), borderColor: TM.palette.warning, backgroundColor: "transparent", tension: 0.35, pointRadius: 0, borderWidth: 2 }
+        ]
+      },
+      options: Object.assign(TM.baseLineOptions(), { plugins: { legend: { display: true, position: "bottom", labels: { color: "#B0B0B0", boxWidth: 10, font: { size: 11 } } }, tooltip: TM.baseLineOptions().plugins.tooltip } })
+    });
+
+    new Chart(document.getElementById("chartQueueTrend"), {
+      type: "bar",
+      data: { labels: labels, datasets: [{ label: "msg/min", data: genSeries(12, 51000, 4500), backgroundColor: TM.palette.warning, borderRadius: 3, barThickness: 16 }] },
+      options: TM.baseLineOptions()
+    });
+
+    new Chart(document.getElementById("chartResourceTrend"), {
+      type: "line",
+      data: {
+        labels: labels,
+        datasets: [
+          { label: "CPU %", data: genSeries(12, 60, 10), borderColor: TM.palette.accent, backgroundColor: "transparent", tension: 0.35, pointRadius: 0, borderWidth: 2 },
+          { label: "Memory %", data: genSeries(12, 73, 6), borderColor: TM.palette.danger, backgroundColor: "transparent", tension: 0.35, pointRadius: 0, borderWidth: 2 }
+        ]
+      },
+      options: Object.assign(TM.baseLineOptions(), { plugins: { legend: { display: true, position: "bottom", labels: { color: "#B0B0B0", boxWidth: 10, font: { size: 11 } } }, tooltip: TM.baseLineOptions().plugins.tooltip } })
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

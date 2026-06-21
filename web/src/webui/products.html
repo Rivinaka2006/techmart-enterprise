@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Management · TechMart Online Operations Console</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- ============== TOP NAVIGATION ============== -->
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="icon-btn" id="sidebarToggle" aria-label="Toggle navigation"><i class="bi bi-list"></i></button>
+    <div class="brand">
+      <span class="brand-mark">TM</span>
+      <div class="brand-text">
+        <span class="brand-name">TechMart Online</span>
+        <span class="brand-sub">Operations Console</span>
+      </div>
+    </div>
+  </div>
+  <div class="topbar-right">
+    <button class="icon-btn" aria-label="Notifications"><i class="bi bi-bell"></i><span class="notif-dot"></span></button>
+    <button class="icon-btn" aria-label="Settings"><i class="bi bi-gear"></i></button>
+    <div class="admin-chip">
+      <div class="avatar">JD</div>
+      <div class="admin-meta">
+        <span class="admin-name">J. Donahue</span>
+        <span class="admin-role">System Administrator</span>
+      </div>
+    </div>
+    <button class="btn-logout"><i class="bi bi-box-arrow-right"></i><span class="d-none d-sm-inline">Logout</span></button>
+  </div>
+</header>
+
+<!-- ============== SIDEBAR ============== -->
+<aside class="sidebar" id="sidebar">
+  <nav class="sidebar-nav">
+    <a href="dashboard.html" class="nav-item "><i class="bi bi-grid-1x2-fill"></i><span>Dashboard</span></a>
+    <a href="products.html" class="nav-item active"><i class="bi bi-box-seam"></i><span>Product Management</span></a>
+    <a href="inventory.html" class="nav-item "><i class="bi bi-boxes"></i><span>Inventory Management</span></a>
+    <a href="orders.html" class="nav-item "><i class="bi bi-receipt-cutoff"></i><span>Order Management</span></a>
+    <a href="sessions.html" class="nav-item "><i class="bi bi-people-fill"></i><span>Customer Sessions</span></a>
+    <a href="messaging.html" class="nav-item "><i class="bi bi-envelope-paper-fill"></i><span>Messaging Center</span></a>
+    <a href="monitoring.html" class="nav-item "><i class="bi bi-cpu-fill"></i><span>System Monitoring</span></a>
+    <a href="analytics.html" class="nav-item "><i class="bi bi-graph-up-arrow"></i><span>Performance Analytics</span></a>
+    <a href="settings.html" class="nav-item "><i class="bi bi-sliders"></i><span>Settings</span></a>
+  </nav>
+  <div class="sidebar-footer">
+    <div class="sys-status"><span class="dot dot-success dot-pulse"></span><span>All systems operational</span></div>
+  </div>
+</aside>
+
+<!-- ============== MAIN CONTENT ============== -->
+<main class="main-content">
+  <div class="page-inner">
+
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">Product Management</h1>
+        <div class="page-breadcrumb">Operations<span class="sep">/</span>Product Management</div>
+      </div>
+      <div class="page-actions">
+        <button class="btn-tm btn-tm-primary"><i class="bi bi-plus-lg"></i> Add Product</button>
+      </div>
+    </div>
+
+    <!-- KPI strip -->
+    <div class="row grid-gap mb-4">
+      <div class="col-6 col-md-3">
+        <div class="kpi-card">
+          <div class="kpi-top"><span class="kpi-label">Total Products</span><span class="kpi-icon icon-bg-accent"><i class="bi bi-box-seam"></i></span></div>
+          <div class="kpi-value">18,402</div>
+          <div class="kpi-trend up"><i class="bi bi-arrow-up-short"></i> 64 added today</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="kpi-card">
+          <div class="kpi-top"><span class="kpi-label">Active Listings</span><span class="kpi-icon icon-bg-success"><i class="bi bi-check-circle"></i></span></div>
+          <div class="kpi-value">17,118</div>
+          <div class="kpi-trend flat"><i class="bi bi-dash"></i> 93% of catalog</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="kpi-card">
+          <div class="kpi-top"><span class="kpi-label">Low Stock</span><span class="kpi-icon icon-bg-warning"><i class="bi bi-exclamation-triangle"></i></span></div>
+          <div class="kpi-value">342</div>
+          <div class="kpi-trend down"><i class="bi bi-arrow-up-short"></i> needs reorder</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="kpi-card">
+          <div class="kpi-top"><span class="kpi-label">Discontinued</span><span class="kpi-icon icon-bg-danger"><i class="bi bi-slash-circle"></i></span></div>
+          <div class="kpi-value">186</div>
+          <div class="kpi-trend flat"><i class="bi bi-dash"></i> archived SKUs</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-tm">
+      <div class="card-tm-header">
+        <p class="card-tm-title mb-0">Product Catalog</p>
+      </div>
+
+      <!-- Toolbar -->
+      <div class="row g-2 mb-3">
+        <div class="col-md-5">
+          <div class="search-box">
+            <i class="bi bi-search"></i>
+            <input type="text" class="form-control-tm" placeholder="Search by product name or ID…" data-tm-search-target="#productsTableBody">
+          </div>
+        </div>
+        <div class="col-md-3">
+          <select class="form-select-tm" data-tm-filter-target="#productsTableBody" data-tm-filter-col="2">
+            <option value="all">All Categories</option>
+            <option value="electronics">Electronics</option>
+            <option value="apparel">Apparel</option>
+            <option value="home & kitchen">Home &amp; Kitchen</option>
+            <option value="sporting goods">Sporting Goods</option>
+            <option value="grocery">Grocery</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <select class="form-select-tm" data-tm-filter-target="#productsTableBody" data-tm-filter-col="5">
+            <option value="all">All Statuses</option>
+            <option value="active">Active</option>
+            <option value="low stock">Low Stock</option>
+            <option value="out of stock">Out of Stock</option>
+            <option value="discontinued">Discontinued</option>
+          </select>
+        </div>
+        <div class="col-md-1">
+          <button class="btn-icon-tm" title="More filters"><i class="bi bi-sliders"></i></button>
+        </div>
+      </div>
+
+      <div class="table-tm-wrap">
+        <table class="table-tm" id="productsTable">
+          <thead>
+            <tr>
+              <th>Product ID</th>
+              <th>Product Name</th>
+              <th>Category</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="productsTableBody">
+            <tr>
+              <td class="cell-id">PRD-10248</td>
+              <td class="cell-main">Wireless Noise-Cancelling Headphones</td>
+              <td>Electronics</td>
+              <td class="mono">$129.99</td>
+              <td class="mono">1,204</td>
+              <td><span class="badge-tm badge-tm-success">Active</span></td>
+              <td><div class="row-actions"><button class="btn-icon-tm" title="Edit"><i class="bi bi-pencil"></i></button><button class="btn-icon-tm" title="Delete"><i class="bi bi-trash3"></i></button></div></td>
+            </tr>
+            <tr>
+              <td class="cell-id">PRD-10249</td>
+              <td class="cell-main">Men's Performance Running Jacket</td>
+              <td>Apparel</td>
+              <td class="mono">$74.50</td>
+              <td class="mono">58</td>
+              <td><span class="badge-tm badge-tm-warning">Low Stock</span></td>
+              <td><div class="row-actions"><button class="btn-icon-tm" title="Edit"><i class="bi bi-pencil"></i></button><button class="btn-icon-tm" title="Delete"><i class="bi bi-trash3"></i></button></div></td>
+            </tr>
+            <tr>
+              <td class="cell-id">PRD-10250</td>
+              <td class="cell-main">12-Piece Non-Stick Cookware Set</td>
+              <td>Home & Kitchen</td>
+              <td class="mono">$189.00</td>
+              <td class="mono">412</td>
+              <td><span class="badge-tm badge-tm-success">Active</span></td>
+              <td><div class="row-actions"><button class="btn-icon-tm" title="Edit"><i class="bi bi-pencil"></i></button><button class="btn-icon-tm" title="Delete"><i class="bi bi-trash3"></i></button></div></td>
+            </tr>
+            <tr>
+              <td class="cell-id">PRD-10251</td>
+              <td class="cell-main">Adjustable Dumbbell Set, 50 lb</td>
+              <td>Sporting Goods</td>
+              <td class="mono">$219.99</td>
+              <td class="mono">0</td>
+              <td><span class="badge-tm badge-tm-danger">Out of Stock</span></td>
+              <td><div class="row-actions"><button class="btn-icon-tm" title="Edit"><i class="bi bi-pencil"></i></button><button class="btn-icon-tm" title="Delete"><i class="bi bi-trash3"></i></button></div></td>
+            </tr>
+            <tr>
+              <td class="cell-id">PRD-10252</td>
+              <td class="cell-main">Organic Trail Mix, 32 oz</td>
+              <td>Grocery</td>
+              <td class="mono">$14.25</td>
+              <td class="mono">2,890</td>
+              <td><span class="badge-tm badge-tm-success">Active</span></td>
+              <td><div class="row-actions"><button class="btn-icon-tm" title="Edit"><i class="bi bi-pencil"></i></button><button class="btn-icon-tm" title="Delete"><i class="bi bi-trash3"></i></button></div></td>
+            </tr>
+            <tr>
+              <td class="cell-id">PRD-10253</td>
+              <td class="cell-main">4K Ultra HD Smart Monitor 27"</td>
+              <td>Electronics</td>
+              <td class="mono">$329.00</td>
+              <td class="mono">76</td>
+              <td><span class="badge-tm badge-tm-warning">Low Stock</span></td>
+              <td><div class="row-actions"><button class="btn-icon-tm" title="Edit"><i class="bi bi-pencil"></i></button><button class="btn-icon-tm" title="Delete"><i class="bi bi-trash3"></i></button></div></td>
+            </tr>
+            <tr>
+              <td class="cell-id">PRD-10254</td>
+              <td class="cell-main">Women's Quilted Puffer Vest</td>
+              <td>Apparel</td>
+              <td class="mono">$59.99</td>
+              <td class="mono">534</td>
+              <td><span class="badge-tm badge-tm-success">Active</span></td>
+              <td><div class="row-actions"><button class="btn-icon-tm" title="Edit"><i class="bi bi-pencil"></i></button><button class="btn-icon-tm" title="Delete"><i class="bi bi-trash3"></i></button></div></td>
+            </tr>
+            <tr>
+              <td class="cell-id">PRD-10255</td>
+              <td class="cell-main">Ceramic Knife Set, 6-Piece</td>
+              <td>Home & Kitchen</td>
+              <td class="mono">$45.00</td>
+              <td class="mono">298</td>
+              <td><span class="badge-tm badge-tm-neutral">Discontinued</span></td>
+              <td><div class="row-actions"><button class="btn-icon-tm" title="Edit"><i class="bi bi-pencil"></i></button><button class="btn-icon-tm" title="Delete"><i class="bi bi-trash3"></i></button></div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+        <span class="text-tertiary" style="font-size:12px;">Showing 1–8 of 18,402 products</span>
+        <div class="pagination-tm">
+          <button class="page-btn" disabled><i class="bi bi-chevron-left"></i></button>
+          <button class="page-btn active">1</button>
+          <button class="page-btn">2</button>
+          <button class="page-btn">3</button>
+          <span class="text-tertiary" style="padding:0 4px;">…</span>
+          <button class="page-btn">2301</button>
+          <button class="page-btn"><i class="bi bi-chevron-right"></i></button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>

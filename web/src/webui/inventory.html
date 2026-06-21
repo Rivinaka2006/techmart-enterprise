@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inventory Management · TechMart Online Operations Console</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- ============== TOP NAVIGATION ============== -->
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="icon-btn" id="sidebarToggle" aria-label="Toggle navigation"><i class="bi bi-list"></i></button>
+    <div class="brand">
+      <span class="brand-mark">TM</span>
+      <div class="brand-text">
+        <span class="brand-name">TechMart Online</span>
+        <span class="brand-sub">Operations Console</span>
+      </div>
+    </div>
+  </div>
+  <div class="topbar-right">
+    <button class="icon-btn" aria-label="Notifications"><i class="bi bi-bell"></i><span class="notif-dot"></span></button>
+    <button class="icon-btn" aria-label="Settings"><i class="bi bi-gear"></i></button>
+    <div class="admin-chip">
+      <div class="avatar">JD</div>
+      <div class="admin-meta">
+        <span class="admin-name">J. Donahue</span>
+        <span class="admin-role">System Administrator</span>
+      </div>
+    </div>
+    <button class="btn-logout"><i class="bi bi-box-arrow-right"></i><span class="d-none d-sm-inline">Logout</span></button>
+  </div>
+</header>
+
+<!-- ============== SIDEBAR ============== -->
+<aside class="sidebar" id="sidebar">
+  <nav class="sidebar-nav">
+    <a href="dashboard.html" class="nav-item "><i class="bi bi-grid-1x2-fill"></i><span>Dashboard</span></a>
+    <a href="products.html" class="nav-item "><i class="bi bi-box-seam"></i><span>Product Management</span></a>
+    <a href="inventory.html" class="nav-item active"><i class="bi bi-boxes"></i><span>Inventory Management</span></a>
+    <a href="orders.html" class="nav-item "><i class="bi bi-receipt-cutoff"></i><span>Order Management</span></a>
+    <a href="sessions.html" class="nav-item "><i class="bi bi-people-fill"></i><span>Customer Sessions</span></a>
+    <a href="messaging.html" class="nav-item "><i class="bi bi-envelope-paper-fill"></i><span>Messaging Center</span></a>
+    <a href="monitoring.html" class="nav-item "><i class="bi bi-cpu-fill"></i><span>System Monitoring</span></a>
+    <a href="analytics.html" class="nav-item "><i class="bi bi-graph-up-arrow"></i><span>Performance Analytics</span></a>
+    <a href="settings.html" class="nav-item "><i class="bi bi-sliders"></i><span>Settings</span></a>
+  </nav>
+  <div class="sidebar-footer">
+    <div class="sys-status"><span class="dot dot-success dot-pulse"></span><span>All systems operational</span></div>
+  </div>
+</aside>
+
+<!-- ============== MAIN CONTENT ============== -->
+<main class="main-content">
+  <div class="page-inner">
+
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">Inventory Management</h1>
+        <div class="page-breadcrumb">Operations<span class="sep">/</span>Inventory Management</div>
+      </div>
+      <div class="page-actions">
+        <button class="btn-tm"><i class="bi bi-arrow-repeat"></i> Force Sync</button>
+        <button class="btn-tm btn-tm-primary"><i class="bi bi-plus-lg"></i> New Stock Entry</button>
+      </div>
+    </div>
+
+    <div class="row grid-gap mb-4">
+      <div class="col-6 col-md-3">
+        <div class="kpi-card">
+          <div class="kpi-top"><span class="kpi-label">Total SKUs Tracked</span><span class="kpi-icon icon-bg-accent"><i class="bi bi-upc-scan"></i></span></div>
+          <div class="kpi-value">18,402</div>
+          <div class="kpi-trend flat"><i class="bi bi-dash"></i> across 5 warehouses</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="kpi-card">
+          <div class="kpi-top"><span class="kpi-label">Low Stock Alerts</span><span class="kpi-icon icon-bg-warning"><i class="bi bi-exclamation-triangle"></i></span></div>
+          <div class="kpi-value">342</div>
+          <div class="kpi-trend down"><i class="bi bi-arrow-up-short"></i> 28 new today</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="kpi-card">
+          <div class="kpi-top"><span class="kpi-label">Out of Stock</span><span class="kpi-icon icon-bg-danger"><i class="bi bi-x-octagon"></i></span></div>
+          <div class="kpi-value">94</div>
+          <div class="kpi-trend down"><i class="bi bi-arrow-up-short"></i> 12 today</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="kpi-card">
+          <div class="kpi-top"><span class="kpi-label">Sync Health</span><span class="kpi-icon icon-bg-success"><i class="bi bi-arrow-repeat"></i></span></div>
+          <div class="kpi-value">99.7<span style="font-size:14px;color:var(--text-secondary)">%</span></div>
+          <div class="kpi-trend flat"><i class="bi bi-dash"></i> last cycle clean</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row grid-gap mb-4">
+      <!-- Warehouse Stock Levels -->
+      <div class="col-lg-7">
+        <div class="card-tm h-100">
+          <div class="card-tm-header">
+            <div>
+              <p class="card-tm-title mb-0">Warehouse Stock Levels</p>
+              <p class="card-tm-subtitle">Capacity utilization by distribution center</p>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <div class="progress-label-row"><span>WH-EAST · Newark, NJ</span><span class="mono text-secondary">82% · 41,200 / 50,000 units</span></div>
+            <div class="progress-tm"><div class="progress-tm-bar accent" data-value="82"></div></div>
+          </div>
+          <div class="mb-3">
+            <div class="progress-label-row"><span>WH-WEST · Reno, NV</span><span class="mono text-secondary">64% · 28,800 / 45,000 units</span></div>
+            <div class="progress-tm"><div class="progress-tm-bar accent" data-value="64"></div></div>
+          </div>
+          <div class="mb-3">
+            <div class="progress-label-row"><span>WH-SOUTH · Dallas, TX</span><span class="mono text-secondary">91% · 36,400 / 40,000 units</span></div>
+            <div class="progress-tm"><div class="progress-tm-bar warning" data-value="91"></div></div>
+          </div>
+          <div class="mb-3">
+            <div class="progress-label-row"><span>WH-MIDWEST · Columbus, OH</span><span class="mono text-secondary">47% · 16,450 / 35,000 units</span></div>
+            <div class="progress-tm"><div class="progress-tm-bar accent" data-value="47"></div></div>
+          </div>
+          <div>
+            <div class="progress-label-row"><span>WH-NORTH · Seattle, WA</span><span class="mono text-secondary">97% · 29,100 / 30,000 units</span></div>
+            <div class="progress-tm"><div class="progress-tm-bar danger" data-value="97"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Inventory Synchronization Status -->
+      <div class="col-lg-5">
+        <div class="card-tm h-100">
+          <div class="card-tm-header">
+            <div>
+              <p class="card-tm-title mb-0">Inventory Synchronization</p>
+              <p class="card-tm-subtitle">Last full cycle: 2 minutes ago</p>
+            </div>
+          </div>
+          <div class="table-tm-wrap">
+            <table class="table-tm">
+              <thead><tr><th>Node</th><th>Status</th><th>Last Sync</th></tr></thead>
+              <tbody>
+                <tr><td class="cell-main">WH-EAST</td><td><span class="badge-tm badge-tm-success"><span class="dot dot-success"></span> Synced</span></td><td class="mono text-secondary">0:02 ago</td></tr>
+                <tr><td class="cell-main">WH-WEST</td><td><span class="badge-tm badge-tm-success"><span class="dot dot-success"></span> Synced</span></td><td class="mono text-secondary">0:02 ago</td></tr>
+                <tr><td class="cell-main">WH-SOUTH</td><td><span class="badge-tm badge-tm-warning"><span class="dot dot-warning"></span> Pending</span></td><td class="mono text-secondary">1:48 ago</td></tr>
+                <tr><td class="cell-main">WH-MIDWEST</td><td><span class="badge-tm badge-tm-success"><span class="dot dot-success"></span> Synced</span></td><td class="mono text-secondary">0:03 ago</td></tr>
+                <tr><td class="cell-main">WH-NORTH</td><td><span class="badge-tm badge-tm-danger"><span class="dot dot-danger"></span> Error</span></td><td class="mono text-secondary">14:22 ago</td></tr>
+                <tr><td class="cell-main">POS Gateway</td><td><span class="badge-tm badge-tm-success"><span class="dot dot-success"></span> Synced</span></td><td class="mono text-secondary">0:01 ago</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row grid-gap">
+      <!-- Low stock alerts -->
+      <div class="col-lg-5">
+        <div class="card-tm h-100">
+          <div class="card-tm-header">
+            <p class="card-tm-title mb-0">Low Stock Alerts</p>
+            <span class="badge-tm badge-tm-warning">342 active</span>
+          </div>
+          <div class="log-list">
+            <div class="log-item">
+              <span class="log-icon icon-bg-warning"><i class="bi bi-exclamation-triangle"></i></span>
+              <div><strong>Adjustable Dumbbell Set, 50 lb</strong><div class="cell-sub">WH-SOUTH · 4 units remaining</div></div>
+            </div>
+            <div class="log-item">
+              <span class="log-icon icon-bg-warning"><i class="bi bi-exclamation-triangle"></i></span>
+              <div><strong>4K Ultra HD Smart Monitor 27"</strong><div class="cell-sub">WH-NORTH · 11 units remaining</div></div>
+            </div>
+            <div class="log-item">
+              <span class="log-icon icon-bg-danger"><i class="bi bi-x-octagon"></i></span>
+              <div><strong>Men's Performance Running Jacket (M)</strong><div class="cell-sub">WH-EAST · 0 units remaining</div></div>
+            </div>
+            <div class="log-item">
+              <span class="log-icon icon-bg-warning"><i class="bi bi-exclamation-triangle"></i></span>
+              <div><strong>Stainless Steel Water Bottle 32oz</strong><div class="cell-sub">WH-WEST · 7 units remaining</div></div>
+            </div>
+            <div class="log-item">
+              <span class="log-icon icon-bg-warning"><i class="bi bi-exclamation-triangle"></i></span>
+              <div><strong>Organic Trail Mix, 32 oz</strong><div class="cell-sub">WH-MIDWEST · 19 units remaining</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stock movement history -->
+      <div class="col-lg-7">
+        <div class="card-tm h-100">
+          <div class="card-tm-header">
+            <p class="card-tm-title mb-0">Stock Movement History</p>
+          </div>
+          <div class="table-tm-wrap">
+            <table class="table-tm">
+              <thead><tr><th>Timestamp</th><th>Product</th><th>Warehouse</th><th>Movement</th><th>Qty</th></tr></thead>
+              <tbody>
+                <tr><td class="mono cell-sub">14:32:08</td><td class="cell-main">Wireless Noise-Cancelling Headphones</td><td>WH-EAST</td><td><span class="badge-tm badge-tm-success">Inbound</span></td><td class="mono">+500</td></tr>
+                <tr><td class="mono cell-sub">14:29:51</td><td class="cell-main">12-Piece Non-Stick Cookware Set</td><td>WH-SOUTH</td><td><span class="badge-tm badge-tm-accent">Outbound</span></td><td class="mono">−120</td></tr>
+                <tr><td class="mono cell-sub">14:25:17</td><td class="cell-main">Ceramic Knife Set, 6-Piece</td><td>WH-MIDWEST</td><td><span class="badge-tm badge-tm-neutral">Adjustment</span></td><td class="mono">−6</td></tr>
+                <tr><td class="mono cell-sub">14:18:44</td><td class="cell-main">Organic Trail Mix, 32 oz</td><td>WH-WEST</td><td><span class="badge-tm badge-tm-accent">Outbound</span></td><td class="mono">−340</td></tr>
+                <tr><td class="mono cell-sub">14:10:02</td><td class="cell-main">Adjustable Dumbbell Set, 50 lb</td><td>WH-NORTH</td><td><span class="badge-tm badge-tm-success">Inbound</span></td><td class="mono">+150</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>
