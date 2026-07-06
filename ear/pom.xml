@@ -40,4 +40,32 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ear-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <version>8</version>
+                    <defaultLibBundleDir>lib</defaultLibBundleDir><modules>
+                    <jarModule>
+                        <groupId>lk.techmart</groupId>
+                        <artifactId>core</artifactId>
+                        <bundleDir>lib</bundleDir>
+                    </jarModule>
+                    <ejbModule>
+                        <groupId>lk.techmart</groupId>
+                        <artifactId>ejb</artifactId>
+                    </ejbModule>
+                    <webModule>
+                        <groupId>lk.techmart</groupId>
+                        <artifactId>web</artifactId>
+                        <contextRoot>techmart-web</contextRoot>
+                    </webModule>
+                </modules>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

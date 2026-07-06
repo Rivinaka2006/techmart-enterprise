@@ -35,7 +35,7 @@ Database Management: PostgreSQL with optimized Connection Pooling
 
 Build & Dependency Management: Apache Maven (Multi-module Architecture)
 
-Testing Integration: JUnit 5, Arquillian (Integration Testing), and Apache JMeter (Performance/Load Benchmarking)
+Testing Integration: Apache JMeter (Performance/Load Benchmarking)
 
 📈 Core Non-Functional Focus (NFR)
 This implementation focuses heavily on validating strict enterprise constraints:
@@ -45,3 +45,4 @@ Scalability: Handling massive transaction bursts via JMS queues and decoupled MD
 Concurrency Optimization: Thread pool handling and optimized database lifecycle management to counter traditional locking bottlenecks.
 
 Fault Tolerance: Resilient lifecycle state management across distributed components.
+

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Settings &middot; TechMart Online Operations Console</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="icon-btn" id="sidebarToggle" aria-label="Toggle navigation"><i class="bi bi-list"></i></button>
+    <div class="brand">
+      <span class="brand-mark">TM</span>
+      <div class="brand-text">
+        <span class="brand-name">TechMart Online</span>
+        <span class="brand-sub">Operations Console</span>
+      </div>
+    </div>
+  </div>
+  <div class="topbar-right">
+    <button class="icon-btn" aria-label="Notifications"><i class="bi bi-bell"></i><span class="notif-dot"></span></button>
+    <a class="icon-btn" href="settings.html" aria-label="Settings"><i class="bi bi-gear"></i></a>
+    <div class="admin-chip">
+      <div class="avatar">--</div>
+      <div class="admin-meta">
+        <span class="admin-name">Loading...</span>
+        <span class="admin-role">Loading...</span>
+      </div>
+    </div>
+    <button class="btn-logout"><i class="bi bi-box-arrow-right"></i><span class="d-none d-sm-inline">Logout</span></button>
+  </div>
+</header>
+
+<aside class="sidebar" id="sidebar">
+  <nav class="sidebar-nav">
+    <a href="dashboard.html" class="nav-item"><i class="bi bi-grid-1x2-fill"></i><span>Dashboard</span></a>
+    <a href="products.html" class="nav-item"><i class="bi bi-box-seam"></i><span>Product Management</span></a>
+    <a href="inventory.html" class="nav-item"><i class="bi bi-boxes"></i><span>Inventory Management</span></a>
+    <a href="orders.html" class="nav-item"><i class="bi bi-receipt-cutoff"></i><span>Order Management</span></a>
+    <a href="sessions.html" class="nav-item"><i class="bi bi-people-fill"></i><span>Customer Sessions</span></a>
+    <a href="messaging.html" class="nav-item"><i class="bi bi-envelope-paper-fill"></i><span>Messaging Center</span></a>
+    <a href="monitoring.html" class="nav-item"><i class="bi bi-cpu-fill"></i><span>System Monitoring</span></a>
+    <a href="analytics.html" class="nav-item"><i class="bi bi-graph-up-arrow"></i><span>Performance Analytics</span></a>
+    <a href="settings.html" class="nav-item active"><i class="bi bi-sliders"></i><span>Settings</span></a>
+  </nav>
+  <div class="sidebar-footer">
+    <div class="sys-status"><span class="dot dot-success dot-pulse"></span><span>All systems operational</span></div>
+  </div>
+</aside>
+
+<main class="main-content">
+  <div class="page-inner">
+
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">Settings</h1>
+        <div class="page-breadcrumb">Operations<span class="sep">/</span>Runtime Settings</div>
+      </div>
+      <div class="page-actions">
+        <button class="btn-tm" id="settingsRefresh"><i class="bi bi-arrow-clockwise"></i> Refresh</button>
+        <button class="btn-tm btn-tm-primary" id="settingsExport"><i class="bi bi-download"></i> Export Snapshot</button>
+      </div>
+    </div>
+
+    <div class="row grid-gap">
+      <div class="col-lg-8">
+
+        <div class="card-tm mb-4">
+          <div class="card-tm-header">
+            <div><p class="card-tm-title mb-0">Database Configuration</p><p class="card-tm-subtitle">Values resolved from persistence unit and runtime datasource</p></div>
+            <span class="badge-tm badge-tm-neutral" id="settingsDatabaseBadge"><span class="dot dot-warning"></span> Loading</span>
+          </div>
+          <div class="row">
+            <div class="col-md-6 form-row"><label class="form-label-tm">Persistence Unit</label><input id="settingsPersistenceUnit" type="text" class="form-control-tm" readonly value="--"></div>
+            <div class="col-md-6 form-row"><label class="form-label-tm">JTA Data Source</label><input id="settingsDataSource" type="text" class="form-control-tm" readonly value="--"></div>
+            <div class="col-md-6 form-row"><label class="form-label-tm">Provider</label><input id="settingsJpaProvider" type="text" class="form-control-tm" readonly value="--"></div>
+            <div class="col-md-6 form-row"><label class="form-label-tm">Schema Generation</label><input id="settingsSchemaGeneration" type="text" class="form-control-tm" readonly value="--"></div>
+            <div class="col-md-6 form-row"><label class="form-label-tm">Database Product</label><input id="settingsDatabaseProduct" type="text" class="form-control-tm" readonly value="--"></div>
+            <div class="col-md-6 form-row"><label class="form-label-tm">Driver</label><input id="settingsDatabaseDriver" type="text" class="form-control-tm" readonly value="--"></div>
+            <div class="col-12 form-row"><label class="form-label-tm">JDBC URL</label><input id="settingsJdbcUrl" type="text" class="form-control-tm mono" readonly value="--"></div>
+          </div>
+          <div class="form-hint" id="settingsDatabaseHint">Loading datasource validation result...</div>
+        </div>
+
+        <div class="card-tm mb-4">
+          <div class="card-tm-header">
+            <div><p class="card-tm-title mb-0">JMS Configuration</p><p class="card-tm-subtitle">Destinations and consumers used by checkout and inventory notifications</p></div>
+            <span class="badge-tm badge-tm-neutral" id="settingsJmsBadge"><span class="dot dot-warning"></span> Loading</span>
+          </div>
+          <div class="row">
+            <div class="col-md-6 form-row"><label class="form-label-tm">Order Queue</label><input id="settingsOrderQueue" type="text" class="form-control-tm mono" readonly value="--"></div>
+            <div class="col-md-6 form-row"><label class="form-label-tm">Order Consumer</label><input id="settingsOrderConsumer" type="text" class="form-control-tm" readonly value="--"></div>
+            <div class="col-md-6 form-row"><label class="form-label-tm">Inventory Topic</label><input id="settingsInventoryTopic" type="text" class="form-control-tm mono" readonly value="--"></div>
+            <div class="col-md-6 form-row"><label class="form-label-tm">Topic Producer</label><input id="settingsTopicProducer" type="text" class="form-control-tm" readonly value="--"></div>
+          </div>
+          <div class="table-tm-wrap mt-3">
+            <table class="table-tm">
+              <thead><tr><th>Subscriber</th><th>Client ID</th><th>Subscription</th><th>Durability</th><th>Recorded Messages</th></tr></thead>
+              <tbody id="settingsSubscriberBody">
+                <tr><td colspan="5" class="text-center text-tertiary">Loading JMS subscribers...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card-tm mb-4">
+          <div class="card-tm-header">
+            <div><p class="card-tm-title mb-0">Session Management</p><p class="card-tm-subtitle">Session tracking and stateful cart timeout values used by the application</p></div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 form-row"><label class="form-label-tm">Cart Stateful Timeout</label><input id="settingsCartTimeout" type="text" class="form-control-tm" readonly value="--"></div>
+            <div class="col-md-4 form-row"><label class="form-label-tm">Active Sessions</label><input id="settingsActiveSessions" type="text" class="form-control-tm" readonly value="--"></div>
+            <div class="col-md-4 form-row"><label class="form-label-tm">Idle Sessions</label><input id="settingsIdleSessions" type="text" class="form-control-tm" readonly value="--"></div>
+            <div class="col-md-4 form-row"><label class="form-label-tm">Expired Sessions</label><input id="settingsExpiredSessions" type="text" class="form-control-tm" readonly value="--"></div>
+            <div class="col-md-8 form-row"><label class="form-label-tm">Idle Expire Endpoint</label><input id="settingsExpireEndpoint" type="text" class="form-control-tm mono" readonly value="--"></div>
+          </div>
+        </div>
+
+        <div class="card-tm mb-4">
+          <div class="card-tm-header">
+            <div><p class="card-tm-title mb-0">Notification Settings</p><p class="card-tm-subtitle">Gateway behavior and recent message-log outcomes</p></div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 form-row"><label class="form-label-tm">Circuit Failure Threshold</label><input id="settingsGatewayThreshold" type="text" class="form-control-tm" readonly value="--"></div>
+            <div class="col-md-6 form-row"><label class="form-label-tm">Circuit Reset Timeout</label><input id="settingsGatewayReset" type="text" class="form-control-tm" readonly value="--"></div>
+            <div class="col-md-6 form-row"><label class="form-label-tm">Admin Email Recipient</label><input id="settingsAdminEmail" type="text" class="form-control-tm" readonly value="--"></div>
+            <div class="col-md-6 form-row"><label class="form-label-tm">Admin Push User</label><input id="settingsAdminPushUser" type="text" class="form-control-tm" readonly value="--"></div>
+          </div>
+          <div class="table-tm-wrap mt-3">
+            <table class="table-tm">
+              <thead><tr><th>Gateway</th><th>Total Calls</th><th>Failures</th><th>Success Rate</th></tr></thead>
+              <tbody id="settingsGatewayBody">
+                <tr><td colspan="4" class="text-center text-tertiary">Loading gateway metrics...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card-tm mb-4">
+          <div class="card-tm-header">
+            <div><p class="card-tm-title mb-0">Runtime Thresholds</p><p class="card-tm-subtitle">Threshold constants currently used by monitoring, inventory, and gateway logic</p></div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 form-row"><label class="form-label-tm">Resource High Load</label><input id="settingsHighLoadThreshold" type="text" class="form-control-tm" readonly value="--"></div>
+            <div class="col-md-6 form-row"><label class="form-label-tm">Resource Critical</label><input id="settingsCriticalThreshold" type="text" class="form-control-tm" readonly value="--"></div>
+            <div class="col-md-6 form-row"><label class="form-label-tm">Inventory Low Stock</label><input id="settingsLowStockThreshold" type="text" class="form-control-tm" readonly value="--"></div>
+            <div class="col-md-6 form-row"><label class="form-label-tm">Gateway Reset Timeout</label><input id="settingsThresholdGatewayReset" type="text" class="form-control-tm" readonly value="--"></div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-lg-4">
+        <div class="card-tm mb-4">
+          <p class="card-tm-title mb-3">Configuration Status</p>
+          <div class="settings-row"><div class="settings-row-label">Database</div><span class="badge-tm badge-tm-neutral" id="settingsStatusDatabase">Loading</span></div>
+          <div class="settings-row"><div class="settings-row-label">JMS Broker</div><span class="badge-tm badge-tm-neutral" id="settingsStatusJms">Loading</span></div>
+          <div class="settings-row"><div class="settings-row-label">Session Store</div><span class="badge-tm badge-tm-neutral" id="settingsStatusSessions">Loading</span></div>
+          <div class="settings-row"><div class="settings-row-label">Notification Channels</div><span class="badge-tm badge-tm-neutral" id="settingsStatusNotifications">Loading</span></div>
+        </div>
+        <div class="card-tm">
+          <p class="card-tm-title mb-2">Runtime Source</p>
+          <div class="log-list" id="settingsRuntimeSource">
+            <div class="log-item"><span class="log-time">--</span><span class="log-icon icon-bg-accent"><i class="bi bi-gear"></i></span><div>Loading runtime settings...</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/auth.js?v=2"></script>
+<script src="assets/js/cart.js"></script>
+<script src="js/settings.js"></script>
+</body>
+</html>
